@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+}
+
+.left {
+    width: 25%;
+    height: 100vh;
+    overflow: scroll;
+    position: relative;
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 30px;
+    position: sticky;
+    top: 10px;
+}
+
+
+.searchBar input {
+    outline: none;
+    border-radius: 10px;
+    padding: 10px 10px 10px 30px;
+    background-color: #c7e3f9;
+    border: none;
+    width: 93%;
+}
+
+.searchBar i {
+    position: absolute;
+    left: 5.5%;
+    color: #555;
+    cursor: pointer;
+}
+
+.profileContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.profileContainer.active {
+    background-color: #d5e8f6;
+    border-left: 5px solid #007bff;
+}
+
+.profileContainer>img {
+    width: 60px;
+    aspect-ratio: 1/1;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.profileContainer h1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.right {
+    width: 75%;
+    height: 100vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-active {
+    background-image: url('https://img.freepik.com/premium-vector/feedback-delightful-trendy-red-color-repeating-pattern-vector-illustration-background_90697-3397.jpg');
+}
+
+
+.no-chat {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 24px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: #fff;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.663);
+}
+
+.right-top {
+    position: absolute;
+    top: 0;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chat-header>img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.chat-header>h2 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin: 0 0 0 10px;
+    cursor: pointer;
+}
+
+.chat-actions>i {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.chat-actions>i:hover {
+    background-color: #d6e9f9;
+    color: #007bff;
+}
+
+
+.right-middle {
+    position: relative;
+    top: 80px;
+    height: calc(100% - 160px);
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 10px;
+}
+
+
+.user-msg {
+    background-color: #4399ff;
+    color: white;
+    width: fit-content;
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    word-wrap: break-word;
+    margin-left: auto;
+}
+
+.right-middle {
+    position: relative;
+    top: 80px;
+    height: calc(100% - 160px);
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 10px;
+    background-color: #e5ddd5;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
+
+.user-msg,
+.ai-msg {
+    max-width: 60%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.aiTimestamp {
+    font-size: 0.75rem;
+    color: #000;
+    margin-top: 4px;
+    align-self: flex-start;
+    text-align: right;
+}
+
+.userTimestamp {
+    font-size: 0.75rem;
+    color: #fff;
+    margin-top: 4px;
+    align-self: flex-start;
+    text-align: right;
+}
+
+.ai-msg {
+    background-color: #dce8ff;
+    color: black;
+    width: fit-content;
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    word-wrap: break-word;
+    margin-right: auto;
+}
+
+
+.right-bottom {
+    position: absolute;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 0 16px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ccc;
+}
+
+.chat-input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+    background-color: #f1f1f1;
+    text-wrap: wrap;
+}
+
+.send-icon {
+    font-size: 2rem;
+    color: hsl(211, 100%, 50%);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.send-icon:hover {
+    transform: scale(1.1);
+    color: hsl(211, 100%, 45%);
+}
