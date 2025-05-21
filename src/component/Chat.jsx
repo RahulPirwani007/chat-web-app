@@ -6,6 +6,7 @@ const Chat = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [message, setMessage] = useState("");
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const bottomRef = useRef(null);
 
   const profile = [
@@ -314,6 +315,16 @@ const Chat = () => {
     return now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
   };
 
+  const handleScreenSizeToggle = () => {
+    if (window.innerWidth <= 400) {
+      setIsSmallScreen(true);
+    }
+  };
+  const handleBackClick = () => {
+    console.log("back clicked");
+    setIsSmallScreen(false);
+  };
+
   useEffect(() => {
     if (activeIndex !== null) {
       const savedMessages =
@@ -396,7 +407,10 @@ const Chat = () => {
 
   return (
     <div className="container">
-      <div className="left">
+      <div
+        className={`left ${isSmallScreen ? "mobile-hidden" : ""}`}
+        onClick={handleScreenSizeToggle}
+      >
         <div className="searchBar">
           <input
             type="search"
@@ -424,13 +438,27 @@ const Chat = () => {
         ))}
       </div>
 
-      <div className={`right ${activeIndex === null ? "right-active" : ""}`}>
+      <div
+        className={`right ${activeIndex === null ? "right-active" : ""} ${
+          isSmallScreen ? "mobile-active" : ""
+        }`}
+        onClick={handleScreenSizeToggle}
+      >
         {activeIndex === null ? (
           <p className="no-chat">Select a chat to start conversation</p>
         ) : (
           <>
             <div className="right-top">
               <div className="chat-header">
+                {isSmallScreen && (
+                  <i
+                    className="bx bx-arrow-back back-icon"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleBackClick();
+                    }}
+                  ></i>
+                )}
                 <img
                   src={profile[activeIndex]?.profileImg}
                   alt={profile[activeIndex]?.aiName}
